@@ -1,22 +1,18 @@
 var today = moment().format('dddd, MMMM Do, YYYY');
-console.log(today);
 $("#currentDay").text(today);
 
 $(document).ready(function () {
 
     colorChange();
-    //renderText();
     
 });
 
 function colorChange() {
     var currentHour = moment().hour();
-    console.log(currentHour);
 
     $(".time-block").each(function () {
 
         var blockHour = $(this).attr("id").split("hour-")[1];
-        console.log(blockHour);
 
         if (currentHour > blockHour) {
 
@@ -39,23 +35,6 @@ function colorChange() {
     })
 }
 
-function renderText() {
-    //something here to show locally stored events on the page 
-    // var test = localStorage.getItem(time, description);
-    // console.log(test);
-    // JSON.parse(test);
-    // console.log(test);
-
-    // $(".time-block").each(function() {
-    //     var time = $(this).attr("data-time");
-    //     var description = localStorage.getItem("9");
-    //     $(this).find("textarea").textContent(description);
-        
-    // })
-    
-}
-
-
 $(".saveBtn").on("click", function () {
     var time = $(this).parent().attr("id");
     var description = $(this).siblings(".description").val();   
@@ -63,7 +42,6 @@ $(".saveBtn").on("click", function () {
     localStorage.setItem(time, description);
 
     colorChange();
-    //renderText();
 
 })
 
